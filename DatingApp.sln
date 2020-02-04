@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29609.76
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatingApp", "DatingApp\DatingApp.csproj", "{58E287AC-44C5-4F6B-8E45-30285BC3607E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatingApp-Front", "DatingApp-Front\DatingApp-Front.csproj", "{3BA9E0F9-BC16-4A64-8345-C411532FB71A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{58E287AC-44C5-4F6B-8E45-30285BC3607E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58E287AC-44C5-4F6B-8E45-30285BC3607E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58E287AC-44C5-4F6B-8E45-30285BC3607E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58E287AC-44C5-4F6B-8E45-30285BC3607E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BA9E0F9-BC16-4A64-8345-C411532FB71A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BA9E0F9-BC16-4A64-8345-C411532FB71A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BA9E0F9-BC16-4A64-8345-C411532FB71A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BA9E0F9-BC16-4A64-8345-C411532FB71A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DE2999BC-EFA7-4E94-A6B2-70E10935881A}
+	EndGlobalSection
+EndGlobal
