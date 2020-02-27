@@ -1,10 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 @import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import '../node_modules/bootswatch/dist/united/bootstrap.css';
 @import '../node_modules/font-awesome/css/font-awesome.min.css';
 @import '../node_modules/alertifyjs/build/css/alertify.min.css';
 @import '../node_modules/alertifyjs/build/css/themes/bootstrap.min.css';
 /* Provide sufficient contrast against white background */ 
-a {
+/*a {
   color: #0366d6;
 }
 
@@ -16,4 +17,4 @@ code {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
-}
+}*/
