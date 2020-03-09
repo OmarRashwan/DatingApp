@@ -18,6 +18,8 @@ using System.Net;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using DatingApp.Helpers;
+using AutoMapper;
+
 namespace DatingApp
 {
     public class Startup
@@ -33,8 +35,9 @@ namespace DatingApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<DContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(opt => { opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore; }) ;
             services.AddCors();
+            services.AddAutoMapper(typeof(DataRepository).Assembly); 
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IDatingRepository, DataRepository>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).
