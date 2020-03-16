@@ -26,6 +26,8 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\_models\photo.ts" />
+    <None Remove="ClientApp\src\app\_resolvers\member-detail.resolver.ts" />
+    <None Remove="ClientApp\src\app\_resolvers\member-list.resolver.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,6 +36,10 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\_models\photo.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\_resolvers\member-list.resolver.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\src\app\_resolvers\member-detail.resolver.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
