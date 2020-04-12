@@ -13,8 +13,8 @@ namespace DatingApp.Helpers
     {
         public AutoMapperProfiles()
         {
-            CreateMap<User, UserForListDto>().
-                ForMember(dest => dest.PhotoUrl, opt => opt.MapFrom(src => src.Photos.FirstOrDefault(p => p.IsMain).url))
+            CreateMap<User, UserForListDto>()
+                .ForMember(dest => dest.PhotoUrl, opt => opt.MapFrom(src => src.Photos.FirstOrDefault(p => p.IsMain).url))
                 .ForMember(dest => dest.Age, opt => opt.MapFrom(src => src.DateOfBirth.CalaculateAge()));
             CreateMap<User, UserForDetailedDto>().
                 ForMember(dest => dest.PhotoUrl, opt => opt.MapFrom(src => src.Photos.FirstOrDefault(p => p.IsMain).url)).

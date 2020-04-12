@@ -4,7 +4,7 @@ import { UserService } from '../../_services/user.service';
 import { AlertifyService } from '../../_services/alertify.service';
 import { ActivatedRoute } from '@angular/router';
 import { error } from 'protractor';
-import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery';
+import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from '@kolkov/ngx-gallery';
 import { NgForOf } from '@angular/common';
 
 @Component({
@@ -21,8 +21,8 @@ export class MemberDetailComponent implements OnInit {
   constructor(private userService: UserService, private alertify: AlertifyService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-     this.route.data.subscribe(data => {
-       this.user = data['user']
+    this.route.data.subscribe(data => {
+      this.user = data['user']; // typescript dont like strings
     });
 
     this.galleryOptions = [
@@ -32,12 +32,28 @@ export class MemberDetailComponent implements OnInit {
         imagePercent: 100,
         thumbnailsColumns: 4,
         imageAnimation: NgxGalleryAnimation.Slide,
-        preview: false,
+        preview: false
       }
     ];
-      this.galleryImages = [];
+
+    this.galleryImages = this.getImages();
   }
 
+
+    getImages() {
+      debugger;
+      const imageUrls = [];
+      for (const photo of this.user.photos) {
+        imageUrls.push({
+          small: photo.url,
+          medium: photo.url,
+          big: photo.url,
+          description: photo.description
+        });
+      }
+      return imageUrls;
+    
+  }
   //loadUser() {
   //  this.userService.getUser(+this.route.snapshot.params['id']).subscribe((user: User) => {
   //    this.user = user;
@@ -45,7 +61,22 @@ export class MemberDetailComponent implements OnInit {
   //    this.alertify.error(error);
   //  });
 
-  //} 
+  //}
+
+  //getImages() {
+  //  debugger;
+  //  const imageUrls = [];
+  //  for (let i = 0; i < this.user.Photos.length; i++) {
+  //    imageUrls.push({
+  //      small: this.user.Photos[i].url,
+  //      medium: this.user.Photos[i].url,
+  //      big: this.user.Photos[i].url,
+  //      description: this.user.Photos[i].description
+  //    });
+  //  }
+  //  return imageUrls;
+  //}
+  
 }
 
 

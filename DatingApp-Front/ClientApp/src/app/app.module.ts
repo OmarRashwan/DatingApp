@@ -7,7 +7,7 @@ import { BsDropdownModule, TabsModule } from 'ngx-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JwtModule } from '@auth0/angular-jwt';
 import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
-import { NgxGalleryModule } from 'ngx-gallery';
+import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 
 
 import { AppComponent } from './app.component';
@@ -23,6 +23,8 @@ import { appRoutes } from './routes';
 import { MemberCardComponent } from './members/member-card/member-card.component';
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
 import { MemberListResolver } from './_resolvers/member-list.resolver';
+import { MemberEditResolver } from './_resolvers/member-edit.resolver';
+import { MemberEditComponent } from './members/member-edit/member-edit.component';
 
 
 export function tokenGetter() {
@@ -46,7 +48,8 @@ export class CustomHammerConfig extends HammerGestureConfig {
     ListsComponent,
     MessagesComponent,
     MemberCardComponent,
-    MemberDetailComponent
+    MemberDetailComponent,
+    MemberEditComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -65,7 +68,7 @@ export class CustomHammerConfig extends HammerGestureConfig {
       }
     })
   ],
-  providers: [AuthService, ErrorInterceptorProvider, MemberDetailResolver, MemberListResolver, { provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig }
+  providers: [AuthService, ErrorInterceptorProvider, MemberDetailResolver, MemberListResolver, MemberEditResolver,{ provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig }
 ],
   bootstrap: [AppComponent]
  
