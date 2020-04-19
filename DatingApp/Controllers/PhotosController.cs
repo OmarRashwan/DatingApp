@@ -32,14 +32,21 @@ namespace DatingApp.Controllers
             _mapper = mapper;
             _cloudinaryConfig = cloudinaryConfig;
 
+            //Account acc = new Account(
+            //     _cloudinaryConfig.Value.CloudName,
+            //    _cloudinaryConfig.Value.ApiKey,
+            //    _cloudinaryConfig.Value.ApiSecret
+            //    );
+
             Account acc = new Account(
-                _cloudinaryConfig.Value.CloudName,
-                _cloudinaryConfig.Value.ApiKey,
-                _cloudinaryConfig.Value.ApiSecret
-                );
+ "imageuploaderdating",
+ "673266181113283",
+ "ewZROCa-hzaBAz0oAazaiY2kGBc"
+);
 
             _cloudinary = new Cloudinary(acc);
         }
+
         [HttpGet("{id}",Name = "GetPhoto")]
         public async Task<IActionResult>GetPhoto(int id)
         {
@@ -50,7 +57,7 @@ namespace DatingApp.Controllers
         }
     
         [HttpPost]
-        public async Task<IActionResult>AddPhotosFotUser(int userId,PhotoForCreationDto photoForCreationDto)
+        public async Task<IActionResult>AddPhotosFotUser(int userId,[FromForm]PhotoForCreationDto photoForCreationDto)
         {
             if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
                 return Unauthorized();
@@ -74,7 +81,8 @@ namespace DatingApp.Controllers
             }
 
             photoForCreationDto.Url = uploadResult.Uri.ToString();
-            photoForCreationDto.PublicIp = uploadResult.PublicId;
+            photoForCreationDto.PublicId = uploadResult.PublicId.ToString();
+            
 
             var photo = _mapper.Map<Photo>(photoForCreationDto);
 
@@ -90,7 +98,7 @@ namespace DatingApp.Controllers
             if(await _repo.SaveAll())
             {
                 var photoToReturn = _mapper.Map<PhotoForReturnDto>(photo);
-                return CreatedAtRoute("GetPhoto",new { id = photo.id}, photoToReturn);
+                return CreatedAtRoute("GetPhoto",new { userId=userId,id = photo.id}, photoToReturn);
             }
              
             return BadRequest("Coudn't Add The Photo");
